@@ -1,0 +1,304 @@
+
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Món quà 20/10 dành riêng cho bạn 💗</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        body {
+            min-height: 100vh;
+            padding: 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .greeting-card {
+            width: 100%;
+            max-width: 750px;
+            padding: 35px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.85);
+            border: 1px solid white;
+            border-radius: 28px;
+            box-shadow: 0 20px 60px rgba(220, 100, 145, 0.18);
+            animation: appear 0.8s ease;
+        }
+
+        /* Hai khung ảnh */
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
+            margin: 25px 0;
+        }
+
+        .photo-card {
+            height: 280px;
+            overflow: hidden;
+            border-radius: 18px;
+            border: 3px solid white;
+            background: #fff0f5;
+            box-shadow: 0 5px 18px rgba(220, 100, 145, 0.18);
+        }
+
+        .photo-card img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+            cursor: zoom-in;
+            transition: transform 0.3s ease;
+        }
+
+        .photo-card img:hover {
+            transform: scale(1.05);
+        }
+
+        .tag {
+            color: #d96a91;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+        }
+
+        .recipient {
+            font-family: 'Pacifico', cursive;
+            color: #d94f85;
+            font-size: clamp(28px, 6vw, 42px);
+            margin-bottom: 20px;
+        }
+
+        .message {
+            color: #80576a;
+            font-size: 16px;
+            line-height: 2;
+            white-space: pre-line;
+            margin: 20px 0;
+        }
+
+        .decor {
+            font-size: 26px;
+            margin: 20px 0;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 13px 25px;
+            border-radius: 30px;
+            background: linear-gradient(135deg, #f48fb1, #e85d91);
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+            transition: 0.25s;
+        }
+
+        .back-link:hover {
+            transform: translateY(-3px);
+        }
+
+        /* Màn hình xem ảnh phóng to */
+        .photo-viewer {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            padding: 55px 20px 25px;
+            background: rgba(25, 15, 25, 0.92);
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .photo-viewer.active {
+            display: flex;
+        }
+
+        .photo-viewer img {
+            display: block;
+            max-width: 92vw;
+            max-height: 78vh;
+            object-fit: contain;
+            border-radius: 12px;
+            animation: zoomIn 0.25s ease;
+        }
+
+        .close-photo {
+            position: absolute;
+            top: 12px;
+            right: 22px;
+            color: white;
+            background: transparent;
+            border: none;
+            font-size: 42px;
+            cursor: pointer;
+        }
+
+        .viewer-hint {
+            color: white;
+            margin-top: 15px;
+            font-size: 13px;
+        }
+
+        @keyframes zoomIn {
+            from {
+                transform: scale(0.85);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 14px;
+            }
+
+            .greeting-card {
+                padding: 22px 16px;
+            }
+
+            .photo-gallery {
+                gap: 10px;
+            }
+
+            .photo-card {
+                height: 190px;
+                border-radius: 12px;
+            }
+
+            .message {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main class="greeting-card">
+        <p class="tag">A LITTLE GIFT FOR YOU</p>
+
+        <!-- Hai ảnh riêng của mỗi bạn -->
+        <div class="photo-gallery">
+            <div class="photo-card">
+                <img
+                    id="greetingImage1"
+                    src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=800&q=85"
+                    alt="Ảnh kỷ niệm thứ nhất"
+                >
+            </div>
+
+            <div class="photo-card">
+                <img
+                    id="greetingImage2"
+                    src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=800&q=85"
+                    alt="Ảnh kỷ niệm thứ hai"
+                >
+            </div>
+        </div>
+
+        <div class="decor">🌷 💗 🌷</div>
+
+        <h1 class="recipient" id="recipientName">Bảo An</h1>
+
+        <h2 style="color: #c86b8d; font-size: 20px;">
+            Happy Vietnamese Women's Day!
+        </h2>
+
+        <p class="message" id="greetingMessage">
+            Chúc Bảo An có một ngày 20/10 thật vui vẻ,
+            luôn hạnh phúc, gặp nhiều may mắn và nhận
+            được thật nhiều yêu thương.
+
+            Mong rằng mỗi ngày của bạn đều có những
+            điều nhỏ bé khiến bạn mỉm cười. 💐
+        </p>
+
+        <div class="decor">✨ 🌸 ✨</div>
+
+        <p style="color: #bd8298; font-size: 13px;">
+            Một món quà nhỏ từ tập thể lớp 💌
+        </p>
+
+        <a href="index.html" class="back-link">
+            ← Quay lại trang chủ
+        </a>
+    </main>
+
+    <!-- Khung ảnh phóng to -->
+    <div class="photo-viewer" id="photoViewer">
+        <button class="close-photo" id="closePhoto"
+                aria-label="Đóng ảnh">&times;</button>
+
+        <img id="enlargedPhoto" src="" alt="Ảnh phóng to">
+
+        <p class="viewer-hint">
+            Nhấn bên ngoài ảnh hoặc phím Esc để đóng
+        </p>
+    </div>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+
+        const name = params.get("name");
+        const message = params.get("message");
+        const image1 = params.get("image1");
+        const image2 = params.get("image2");
+
+        if (name) {
+            document.getElementById("recipientName").textContent = name;
+        }
+
+        if (message) {
+            document.getElementById("greetingMessage").textContent = message;
+        }
+
+        if (image1) {
+            document.getElementById("greetingImage1").src = image1;
+        }
+
+        if (image2) {
+            document.getElementById("greetingImage2").src = image2;
+        }
+
+        const viewer = document.getElementById("photoViewer");
+        const enlargedPhoto = document.getElementById("enlargedPhoto");
+
+        document.querySelectorAll(".photo-card img").forEach(function(img) {
+            img.addEventListener("click", function() {
+                enlargedPhoto.src = this.src;
+                viewer.classList.add("active");
+                document.body.style.overflow = "hidden";
+            });
+        });
+
+        function closePhoto() {
+            viewer.classList.remove("active");
+            enlargedPhoto.src = "";
+            document.body.style.overflow = "";
+        }
+
+        document.getElementById("closePhoto").addEventListener("click", closePhoto);
+
+        viewer.addEventListener("click", function(event) {
+            if (event.target === viewer) {
+                closePhoto();
+            }
+        });
+
+        document.addEventListener("keydown", function(event) {
+            if (event.key === "Escape") {
+                closePhoto();
+            }
+        });
+    </script>
+</body>
+</html>
